@@ -16,9 +16,9 @@ export class Pharmacy {
         case this.drugs[i].name === "Herbal Tea":
           this.drugs[i].expiresIn -= 1;
           if (this.drugs[i].expiresIn < 0) {
-            // Benefit degrades twice as fast.
+            // Benefit increases twice as fast after the expiration date
             this.drugs[i].benefit += 2;
-            // The Benefit of an item is never negative.
+            // The Benefit of an item is never more than 50.
             if (this.drugs[i].benefit > 50) {
               this.drugs[i].benefit = 50;
               break;
@@ -30,6 +30,7 @@ export class Pharmacy {
         case this.drugs[i].name === "Fervex":
           this.drugs[i].expiresIn -= 1;
           if (this.drugs[i].expiresIn > 0) {
+            // Benefit increases by 2 when there are 10 days or less and by 3 when there are 5 days or less
             if (this.drugs[i].expiresIn <= 10 && this.drugs[i].expiresIn > 5) {
               this.drugs[i].benefit += 2;
             }
@@ -37,6 +38,7 @@ export class Pharmacy {
               this.drugs[i].benefit += 3;
             }
           }
+          // The Benefit of an item is never more than 50
           if (this.drugs[i].benefit > 50) {
             this.drugs[i].benefit = 50;
             break;
@@ -57,6 +59,7 @@ export class Pharmacy {
             this.drugs[i].benefit -= 2;
           }
           break;
+        // "Magic Pill" never expires nor decreases in Benefit
         case this.drugs[i].name === "Magic Pill":
           break;
         default:
@@ -67,7 +70,6 @@ export class Pharmacy {
             // The Benefit of an item is never negative.
             if (this.drugs[i].benefit < 0) {
               this.drugs[i].benefit = 0;
-              break;
             }
           } else {
             this.drugs[i].benefit -= 1;
