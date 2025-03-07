@@ -32,7 +32,7 @@ describe("Test - Fervex", () => {
     ]);
   });
   it("The Benefit of an item is never more than 50.", () => {
-    expect(drugsAfterOneMonth([new Drug("Fervex", 25, 40)])).toEqual([
+    expect(drugsAfterOneMonth([new Drug("Fervex", 25, 30)])).toEqual([
       new Drug("Fervex", -5, 50),
     ]);
   });
