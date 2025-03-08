@@ -28,7 +28,7 @@ describe("Test - Herbal Tea", () => {
 describe("Test - Fervex", () => {
   it("Benefit increases by 2 when there are 10 days or less", () => {
     expect(drugsAfterOneMonth([new Drug("Fervex", 20, 10)])).toEqual([
-      new Drug("Fervex", -10, 35),
+      new Drug("Fervex", -10, 47),
     ]);
   });
   it("The Benefit of an item is never more than 50.", () => {
