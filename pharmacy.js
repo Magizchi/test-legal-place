@@ -47,16 +47,16 @@ export class Pharmacy {
           break;
         case "Dafalgan":
           this.drugs[i].expiresIn -= 1;
-          if (this.drugs[i].expiresIn < 0) {
+          if (this.drugs[i].expiresIn >= 0) {
+            this.drugs[i].benefit -= 2;
+          } else {
             // Benefit degrades twice as fast.
             this.drugs[i].benefit -= 4;
-            // The Benefit of an item is never negative.
-            if (this.drugs[i].benefit < 0) {
-              this.drugs[i].benefit = 0;
-              break;
-            }
-          } else {
-            this.drugs[i].benefit -= 2;
+          }
+          // The Benefit of an item is never negative.
+          if (this.drugs[i].benefit < 0) {
+            this.drugs[i].benefit = 0;
+            break;
           }
           break;
         // "Magic Pill" never expires nor decreases in Benefit
@@ -64,15 +64,16 @@ export class Pharmacy {
           break;
         default:
           this.drugs[i].expiresIn -= 1;
-          if (this.drugs[i].expiresIn < 0) {
+          if (this.drugs[i].expiresIn >= 0) {
+            this.drugs[i].benefit -= 1;
+          } else {
             // Benefit degrades twice as fast.
             this.drugs[i].benefit -= 2;
-            // The Benefit of an item is never negative.
-            if (this.drugs[i].benefit < 0) {
-              this.drugs[i].benefit = 0;
-            }
-          } else {
-            this.drugs[i].benefit -= 1;
+          }
+          // The Benefit of an item is never negative.
+          if (this.drugs[i].benefit < 0) {
+            this.drugs[i].benefit = 0;
+            break;
           }
           break;
       }
