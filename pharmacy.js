@@ -12,22 +12,20 @@ export class Pharmacy {
   }
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
-      switch (true) {
-        case this.drugs[i].name === "Herbal Tea":
+      switch (this.drugs[i].name) {
+        case "Herbal Tea":
           this.drugs[i].expiresIn -= 1;
           if (this.drugs[i].expiresIn < 0) {
             // Benefit increases twice as fast after the expiration date
             this.drugs[i].benefit += 2;
-            // The Benefit of an item is never more than 50.
-            if (this.drugs[i].benefit > 50) {
-              this.drugs[i].benefit = 50;
-              break;
-            }
           } else {
             this.drugs[i].benefit += 1;
           }
+          if (this.drugs[i].benefit > 50) {
+            this.drugs[i].benefit = 50;
+          }
           break;
-        case this.drugs[i].name === "Fervex":
+        case "Fervex":
           this.drugs[i].expiresIn -= 1;
           if (this.drugs[i].expiresIn > 0) {
             // Benefit increases by 2 when there are 10 days or less and by 3 when there are 5 days or less
@@ -41,11 +39,10 @@ export class Pharmacy {
           // The Benefit of an item is never more than 50
           if (this.drugs[i].benefit > 50) {
             this.drugs[i].benefit = 50;
-            break;
           }
 
           break;
-        case this.drugs[i].name === "Dafalgan":
+        case "Dafalgan":
           this.drugs[i].expiresIn -= 1;
           if (this.drugs[i].expiresIn < 0) {
             // Benefit degrades twice as fast.
@@ -60,7 +57,7 @@ export class Pharmacy {
           }
           break;
         // "Magic Pill" never expires nor decreases in Benefit
-        case this.drugs[i].name === "Magic Pill":
+        case "Magic Pill":
           break;
         default:
           this.drugs[i].expiresIn -= 1;
