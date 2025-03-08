@@ -15,11 +15,11 @@ export class Pharmacy {
       switch (this.drugs[i].name) {
         case "Herbal Tea":
           this.drugs[i].expiresIn -= 1;
-          if (this.drugs[i].expiresIn < 0) {
+          if (this.drugs[i].expiresIn >= 0) {
+            this.drugs[i].benefit += 1;
+          } else {
             // Benefit increases twice as fast after the expiration date
             this.drugs[i].benefit += 2;
-          } else {
-            this.drugs[i].benefit += 1;
           }
           if (this.drugs[i].benefit > 50) {
             this.drugs[i].benefit = 50;
@@ -27,7 +27,10 @@ export class Pharmacy {
           break;
         case "Fervex":
           this.drugs[i].expiresIn -= 1;
-          if (this.drugs[i].expiresIn > 0) {
+          if (this.drugs[i].expiresIn >= 0) {
+            if (this.drugs[i].expiresIn > 10) {
+              this.drugs[i].benefit += 1;
+            }
             // Benefit increases by 2 when there are 10 days or less and by 3 when there are 5 days or less
             if (this.drugs[i].expiresIn <= 10 && this.drugs[i].expiresIn > 5) {
               this.drugs[i].benefit += 2;
